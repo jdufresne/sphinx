@@ -1019,11 +1019,6 @@ class StandaloneHTMLBuilder(Builder):
 
         try:
             output = self.templates.render(templatename, ctx)
-        except UnicodeError:
-            logger.warning(__("a Unicode error occurred when rendering the page %s. "
-                              "Please make sure all config values that contain "
-                              "non-ASCII content are Unicode strings."), pagename)
-            return
         except Exception as exc:
             raise ThemeError(__("An error happened in rendering the page %s.\nReason: %r") %
                              (pagename, exc)) from exc
